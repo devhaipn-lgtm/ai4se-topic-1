@@ -1,0 +1,363 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{etoolbox}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\AtBeginEnvironment{thebibliography}{\setlength{\itemsep}{0.65\baselineskip}}
+
+\title{Topic 1: Issue Report Classification}
+\author{Pham Ngoc Hai}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The NLBSE'24 dataset contains 3,000 GitHub issue reports from five open-source
+repositories. Each issue is labelled as a bug, feature, or question. This
+project builds one classifier for each repository to predict these labels from
+the issue title and description. We compare five text models and one dummy
+baseline using five-fold cross-validation on the training set. Based on this
+comparison, we choose word-and-character TF--IDF with LinearSVC. On the official
+test set, our chosen model achieved a cross-repository macro-F1 of 0.754. We
+also examined three exact train/test overlaps; excluding them changed macro-F1
+by only 0.000257.
+\end{abstract}
+
+\section{Problem and Research Questions}
+
+The NLBSE'24 tool competition ask us to classify GitHub issues as bugs, features, or questions. % INTENTIONAL ESL 01
+Each model receive an issue title and description as input. % INTENTIONAL ESL 02
+It returns exactly one label. The project answer three research questions. % INTENTIONAL ESL 03
+These questions guides the model comparison and final evaluation. % INTENTIONAL ESL 04
+This task follows the NLBSE'24 tool competition \cite{nlbse2024} and earlier
+work on issue classification
+\cite{kallis2020tickettagger,kallis2019tickettagger}.
+
+The research questions are:
+
+\begin{enumerate}
+  \item Which text configuration performs best under training-only
+  cross-validation?
+  \item How well does the chosen model perform on the official test set,
+  including differences across repositories and labels and comparison with
+  the NLBSE'24 results?
+  \item Which errors does the chosen model make most often, and how can the
+  approach be improved?
+\end{enumerate}
+
+\section{Dataset and Invariants}
+
+The NLBSE'24 tool competition provides 3,000 issues from five repositories. Each split contain % INTENTIONAL ESL 05
+1,500 issues. The training set provide 100 examples for every repository and % INTENTIONAL ESL 06
+label combination. The test set remain fixed for final evaluation. % INTENTIONAL ESL 07
+It has the same balanced structure as the training set. No title is missing.
+Two test issues have a missing description. Table~\ref{tab:dataset} summarizes
+these checks.
+
+\begin{table}[H]
+\centering\small
+\caption{Size and quality checks for the official dataset split.}
+\label{tab:dataset}
+\input{generated/dataset_summary.tex}
+\end{table}
+
+\section{Implementation Architecture}
+
+The four notebooks are the main execution path. Each notebook call functions % INTENTIONAL ESL 08
+from the project package; model logic is not duplicated inside the notebooks.
+This sequence make the complete experiment easier to follow. % INTENTIONAL ESL 09
+
+\begin{enumerate}
+  \item Notebook 01 (\emph{Data Inspection}) calls the package data-loading,
+  text-preparation, and inspection functions. It displays balance, missing
+  values, duplicates, and exact overlaps.
+  \item Notebook 02 (\emph{Chosen Model}) displays the executed five-fold
+  comparison. Its optional rerun calls \texttt{run\_cross\_validation}, which
+  fits all six candidates using training data only.
+  \item Notebook 03 (\emph{Final Evaluation}) applies the selected
+  configuration separately to five repositories. Its optional rerun calls the
+  final-evaluation workflow.
+  \item Notebook 04 (\emph{Results}) reads the final metrics and predictions to
+  display repository scores, class scores, the confusion matrix, and common
+  errors.
+\end{enumerate}
+
+For example, \texttt{build\_model\_text} prepares the issue text and
+\texttt{run\_cross\_validation} performs the train-only model comparison.
+
+The executed outputs are stored as JSON, CSV, and PNG files. For example,
+\texttt{metrics.json} contains the final scores and \texttt{predictions.csv}
+contains row-level true and predicted labels. The final-result directory also
+contains confusion-matrix images. The notebooks read these files to display
+tables and figures.
+
+\section{Preprocessing, Data Inspection, and Protocol}
+
+The preprocessing step join the issue title and description into one text field. % INTENTIONAL ESL 10
+A missing description become an empty string. % INTENTIONAL ESL 11
+Repeated whitespace is reduced to one space. These steps preserves code, % INTENTIONAL ESL 12
+Markdown, URLs, identifiers, punctuation, and letter case. Repository name and
+creation time are not model features.
+
+The function first validates the five required columns. It then returns a new
+Pandas series with the same row index as the input frame. It inserts
+\texttt{[TITLE]} and \texttt{[BODY]} markers so the vectorizer can distinguish
+the two fields. It does not lowercase, stem, remove stop words, or strip code.
+Figure~\ref{fig:preprocess-code} shows the exact construction and the main
+inspection operations.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\linewidth]{generated/figures/code-preprocessing-inspection.png}
+\caption{Text construction and per-split dataset inspection.}
+\label{fig:preprocess-code}
+\end{figure}
+
+The inspection counts missing values and groups rows by repository and label.
+It calculates text-length statistics and finds exact duplicate groups. For the
+cross-split check, the code hashes the raw title-description pair with
+SHA-256 after converting only a missing description to an empty string. It does
+not normalize whitespace before this comparison. This keeps the overlap rule
+strict and repeatable.
+
+We also compare exact title-description pairs across the two splits. Three test
+issues also appear in training. One of these pairs has different labels. The
+main evaluation keeps all official test issues. A second evaluation removes
+only these three overlaps to measure their effect.
+
+\section{Chosen Model Selection}
+
+The comparison include five text models and one dummy baseline. % INTENTIONAL ESL 13
+The text models are two word TF--IDF logistic-regression configurations and
+three word-and-character TF--IDF LinearSVC configurations. The dummy baseline
+ignore the issue text and always predicts one class. % INTENTIONAL ESL 14
+
+The word vectorizer uses one-word and two-word sequences. The character
+vectorizer uses three-to-five-character sequences inside word boundaries. Both
+use sublinear term frequency. Logistic regression is tested at $C=1$ and
+$C=4$. LinearSVC is tested at $C=0.5$, $C=1$, and $C=2$.
+Figure~\ref{fig:pipeline-code} shows how the word and character matrices are
+joined before LinearSVC receives them.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.90\linewidth]{generated/figures/code-candidate-pipeline.png}
+\caption{Construction of the word-and-character TF--IDF LinearSVC pipeline.}
+\label{fig:pipeline-code}
+\end{figure}
+
+Five-fold cross-validation divides each repository's training issues into five
+parts. Each candidate use four parts for training and one part for validation. % INTENTIONAL ESL 15
+This process repeats until every part has been used for validation. The five
+folds gives one mean macro-F1 score for each repository and candidate. % INTENTIONAL ESL 16
+We then average the five repository scores. The official test set is not read
+during this comparison.
+
+Each repository contains 300 training issues. One fold therefore fits on 240
+rows and validates on 60 rows, with 20 validation rows for each label. The
+vectorizers and classifier are created again inside every fold, so validation
+text cannot influence the TF--IDF vocabulary. Six candidates, five
+repositories, and five folds produce 150 fitted pipelines. Of these, 125 are
+fits of the five text models and 25 are dummy fits. Figure~\ref{fig:fold-code}
+shows the loop.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\linewidth]{generated/figures/code-five-fold-comparison.png}
+\caption{Training-only five-fold comparison for every repository and candidate.}
+\label{fig:fold-code}
+\end{figure}
+
+Every candidate produces 25 macro-F1 values: five folds for each of five
+repositories. The code first averages the five folds within each repository,
+then averages the five repository means. It selects the highest global mean.
+An exact tie is resolved by lower population standard deviation, lower
+complexity rank, and candidate name, in that order.
+
+Word-and-character TF--IDF with LinearSVC at $C=1$ achieved the highest mean
+cross-validation macro-F1, 0.748. We therefore selected this configuration for
+all five repositories. Table~\ref{tab:grid} reports every candidate, including
+the dummy baseline.
+
+\begin{table}[H]
+\centering\small
+\caption{Five-fold cross-validation results on the training set.}
+\label{tab:grid}
+\input{generated/candidate_grid.tex}
+\end{table}
+
+\section{Applying the Chosen Model}
+
+The final stage read the selected candidate name from the saved % INTENTIONAL ESL 17
+cross-validation result. It checks that this name matches a defined candidate
+factory. It then loads only the
+training split. For each repository, it create a fresh copy of the chosen % INTENTIONAL ESL 18
+pipeline and fits it on all 300 training issues from that repository. This
+produces five separate models with the same parameters but different TF--IDF
+vocabularies and LinearSVC weights.
+
+The five pipelines is saved as \texttt{.joblib} files. Their filenames, % INTENTIONAL ESL 19
+repositories, and SHA-256 hashes are recorded in the training manifest. The
+code verify that all five files exist and match their recorded hashes before % INTENTIONAL ESL 20
+loading the test split. Figure~\ref{fig:final-application-code} shows the two
+repository loops.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\linewidth]{generated/figures/code-final-model-application.png}
+\caption{Training five repository models and applying each model to its test rows.}
+\label{fig:final-application-code}
+\end{figure}
+
+The official test split is loaded once after training and verification. Each
+repository model receives the 300 test issues from the same repository. The
+primary policy keeps all 1,500 predictions. The leakage-sensitive policy keeps
+1,497 predictions after removing the three exact overlaps. Each stored row
+contains the repository, true label, predicted label, text hash, and overlap
+flag. No test label is passed to \texttt{fit()} or used to change the pipeline.
+
+\section{Final Chosen-Model Evaluation}
+
+Our chosen model is trained once on all training issues from each repository.
+It achieves a cross-repository macro-F1 of 0.754385 on the official test set.
+The score is the arithmetic mean of the five repository macro-F1 scores.
+Tables~\ref{tab:repositories} and~\ref{tab:classes} show where performance
+varies by repository and label.
+
+\begin{table}[H]
+\centering\small
+\caption{Repository-level macro metrics for our chosen model.}
+\label{tab:repositories}
+\input{generated/chosen_repositories.tex}
+\end{table}
+
+\begin{table}[H]
+\centering\small
+\caption{Global per-class metrics for both evaluation policies.}
+\label{tab:classes}
+\input{generated/chosen_classes.tex}
+\end{table}
+
+\begin{table}[H]
+\centering\small
+\caption{Primary and leakage-sensitive policy summary.}
+\label{tab:policies}
+\input{generated/policy_summary.tex}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.78\linewidth]{generated/figures/cross-validation-candidates.png}
+\caption{Zoomed comparison of the five text models. Error bars show
+population standard deviations; the dummy remains in Table~\ref{tab:grid}.}
+\label{fig:cv}
+\end{figure}
+
+\section{Comparison with NLBSE'24 Results}
+
+The NLBSE'24 tool competition reports SetFit scores of 0.827 (headline) and
+0.824 (detailed). Their RoBERTa and fastText scores are 0.792 and 0.718. Our
+chosen model achieved 0.754 on the official test set.
+
+\begin{table}[H]
+\centering\small
+\caption{Our results compared with the NLBSE'24 results.}
+\label{tab:baselines}
+\input{generated/baseline_comparison.tex}
+\end{table}
+
+\section{Error Analysis}
+
+The largest error occur when questions are predicted as features. % INTENTIONAL ESL 21
+The next largest error is predicting bugs as questions. Table~\ref{tab:errors}
+shows the ten most frequent repository-specific errors. Figure~\ref{fig:confusion}
+shows all predictions across the five repositories.
+
+\begin{table}[H]
+\centering\small
+\caption{Most frequent primary-policy confusion pairs.}
+\label{tab:errors}
+\input{generated/error_analysis.tex}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.62\linewidth]{generated/figures/chosen-model-confusion-matrix.png}
+\caption{Aggregate primary-policy confusion matrix generated from final metrics.}
+\label{fig:confusion}
+\end{figure}
+
+\section{Analysis and Improvements}
+
+The error table shows two main problems. The model confuses questions with
+features because both labels contain requests for a change or a new capability.
+It also confuses bugs with questions when an issue describes a failure and asks
+for an explanation at the same time. Word and character features capture terms
+such as ``error'', ``support'', and ``request'', but they do not reliably capture
+the purpose of the sentence.
+
+Performance also changes by repository. Bitcoin is the weakest repository with
+macro-F1 of 0.701. Its issue language is more technical and its reports contain
+shorter context. React is stronger at 0.807, where issue descriptions provide
+more repeated vocabulary. This suggests that repository conventions affect the
+task even when every repository has the same label counts.
+
+These error patterns shows where the current features are insufficient. % INTENTIONAL ESL 22
+
+The chosen model is one global configuration. It is simple and fast, but it
+cannot adapt its vocabulary or decision boundary to each repository. The main
+improvements are repository-specific tuning, more careful treatment of short
+titles, and error-driven review of question--feature and bug--question pairs.
+Character features can be expanded for identifiers and code fragments. A
+sentence-embedding model can be tested later if a stronger semantic comparison
+is required, but it is outside the chosen-model result reported here.
+The proposed improvements focuses on the observed confusion pairs. % INTENTIONAL ESL 23
+
+The three exact train/test overlaps have little effect. Removing them changes
+macro-F1 from 0.754385 to 0.754642, a difference of 0.000257. The reported
+result therefore does not depend materially on these rows.
+
+\section{Run Instructions and Conclusion}
+
+The four numbered notebooks are the recommended execution path. For local use,
+create a Python 3.11 environment and call its interpreter directly. PowerShell
+environment activation is not required. The same interpreter installs the
+dependencies and starts JupyterLab:
+
+\begin{verbatim}
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m jupyter lab
+\end{verbatim}
+
+After JupyterLab opens, run Notebooks 01, 02, 03, and 04 in numerical order.
+By default, model training is off. Notebook 02 sets
+\texttt{RERUN\_CROSS\_VALIDATION=False}, and Notebook 03 sets
+\texttt{RERUN\_FINAL\_EVALUATION=False}. With these defaults, the notebooks
+load and display the saved results. Set the relevant switch to \texttt{True}
+only when the corresponding training stage must be repeated.
+
+The same notebook workflow also runs in Colab. Upload the complete project
+folder to Google Drive, open the notebooks from \texttt{notebooks/} in
+numerical order, and select \emph{Runtime $>$ Run all}. The README lists
+optional command-line checks, but they are not required for the notebook
+presentation workflow.
+
+Our chosen model achieved 0.754. The NLBSE'24 tool competition reports 0.827
+for SetFit. The three exact train/test overlaps changed the chosen-model result
+by only 0.000257. The experiment selected one configuration, measured its test
+performance, and identified its main errors and possible improvements. These
+results answer the three research questions without changing the official data
+split.
+
+\clearpage
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
