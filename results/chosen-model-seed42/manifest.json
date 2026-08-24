@@ -1,0 +1,124 @@
+{
+  "backend": "file",
+  "labels": [
+    "bug",
+    "feature",
+    "question"
+  ],
+  "leakage_policy": {
+    "definition": "raw title/body pair after scalar-null body conversion only",
+    "excluded_count": 3,
+    "excluded_hashes": [
+      "7620954cae771064d45a01cd056dcf9175fb6de5e9387550104d0e9c6f1e4116",
+      "85f1c516c46d6c1214d0608f20a1eec82da670661c5acc601a16a09409a694b2",
+      "f33f7c447fc0a31d7aa800338a7118271afba649009881e424af5e5b627c2a6f"
+    ],
+    "overlap_records": [
+      {
+        "conflicting_label": false,
+        "test_label": "bug",
+        "test_repo": "tensorflow/tensorflow",
+        "text_hash": "7620954cae771064d45a01cd056dcf9175fb6de5e9387550104d0e9c6f1e4116",
+        "title": "Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found",
+        "train_label": "bug",
+        "train_repo": "tensorflow/tensorflow"
+      },
+      {
+        "conflicting_label": false,
+        "test_label": "feature",
+        "test_repo": "bitcoin/bitcoin",
+        "text_hash": "85f1c516c46d6c1214d0608f20a1eec82da670661c5acc601a16a09409a694b2",
+        "title": "#F",
+        "train_label": "feature",
+        "train_repo": "bitcoin/bitcoin"
+      },
+      {
+        "conflicting_label": true,
+        "test_label": "feature",
+        "test_repo": "bitcoin/bitcoin",
+        "text_hash": "f33f7c447fc0a31d7aa800338a7118271afba649009881e424af5e5b627c2a6f",
+        "title": ".",
+        "train_label": "bug",
+        "train_repo": "bitcoin/bitcoin"
+      }
+    ]
+  },
+  "model_files": [
+    {
+      "filename": "bitcoin_bitcoin.joblib",
+      "repository": "bitcoin/bitcoin",
+      "sha256": "506b798f78523f463516549f8691fce343f159ff26e08795001938b8b9f1df98"
+    },
+    {
+      "filename": "facebook_react.joblib",
+      "repository": "facebook/react",
+      "sha256": "335bc1592247748ad5d588db3c2c7e82da82ea79c46e3f2e1d9bbef9c20e46a2"
+    },
+    {
+      "filename": "microsoft_vscode.joblib",
+      "repository": "microsoft/vscode",
+      "sha256": "d87e2ba3105646a623309f9b61923a59f4069d5dc1448e766a70befc129a3ea9"
+    },
+    {
+      "filename": "opencv_opencv.joblib",
+      "repository": "opencv/opencv",
+      "sha256": "1f4e41cb9ef28d82808f55bb30231c0bafe1074f7e293bc08de3b1c4e0b0a7ee"
+    },
+    {
+      "filename": "tensorflow_tensorflow.joblib",
+      "repository": "tensorflow/tensorflow",
+      "sha256": "954ade821b36a9b8754d24f30e9605a47f669aea8b269cbe7fabfd2dc4fead5e"
+    }
+  ],
+  "package_versions": {
+    "joblib": "1.5.3",
+    "matplotlib": "3.11.1",
+    "numpy": "2.3.5",
+    "pandas": "3.0.1",
+    "python": "3.12.13",
+    "scikit-learn": "1.9.0"
+  },
+  "repositories": [
+    "bitcoin/bitcoin",
+    "facebook/react",
+    "microsoft/vscode",
+    "opencv/opencv",
+    "tensorflow/tensorflow"
+  ],
+  "row_counts": {
+    "test": 1500,
+    "train": 1500
+  },
+  "run_id": "chosen-model-seed42",
+  "runtime_seconds": 22.06217319999996,
+  "seed": 42,
+  "selected_candidate": {
+    "complexity_rank": 4,
+    "name": "word_char_tfidf_svc_c1",
+    "parameters": {
+      "C": 1,
+      "char_analyzer": "char_wb",
+      "char_ngram_range": [
+        3,
+        5
+      ],
+      "estimator": "LinearSVC",
+      "features": "word_plus_char_wb_tfidf",
+      "max_iter": 5000,
+      "random_state": 42,
+      "sublinear_tf": true,
+      "word_ngram_range": [
+        1,
+        2
+      ]
+    }
+  },
+  "selected_cv_result": {
+    "path": "results\\cross_validation.json",
+    "selected_candidate": "word_char_tfidf_svc_c1",
+    "sha256": "85f8bc577db74ea96dcc1650a6d050f356663c7f731ebeeb8a2e61ca0ec260cb"
+  },
+  "test_content_sha256": "cd4d252b8d4d4ac5460133344dcbef254e2efc371e73479a1ab4aecb948c16fd",
+  "timestamp_utc": "2026-08-24T15:30:19.171453+07:00",
+  "train_content_sha256": "2a4e69fc19b9a82e3003f7e46bfa8d3d953b16c8aaa511ee249bfb9e5468daa9"
+}

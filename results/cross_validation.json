@@ -1,0 +1,1790 @@
+{
+  "candidate_parameters": {
+    "dummy_most_frequent": {
+      "complexity_rank": 0,
+      "name": "dummy_most_frequent",
+      "parameters": {
+        "estimator": "DummyClassifier",
+        "strategy": "most_frequent"
+      }
+    },
+    "word_char_tfidf_svc_c0_5": {
+      "complexity_rank": 3,
+      "name": "word_char_tfidf_svc_c0_5",
+      "parameters": {
+        "C": 0.5,
+        "char_analyzer": "char_wb",
+        "char_ngram_range": [
+          3,
+          5
+        ],
+        "estimator": "LinearSVC",
+        "features": "word_plus_char_wb_tfidf",
+        "max_iter": 5000,
+        "random_state": 42,
+        "sublinear_tf": true,
+        "word_ngram_range": [
+          1,
+          2
+        ]
+      }
+    },
+    "word_char_tfidf_svc_c1": {
+      "complexity_rank": 4,
+      "name": "word_char_tfidf_svc_c1",
+      "parameters": {
+        "C": 1,
+        "char_analyzer": "char_wb",
+        "char_ngram_range": [
+          3,
+          5
+        ],
+        "estimator": "LinearSVC",
+        "features": "word_plus_char_wb_tfidf",
+        "max_iter": 5000,
+        "random_state": 42,
+        "sublinear_tf": true,
+        "word_ngram_range": [
+          1,
+          2
+        ]
+      }
+    },
+    "word_char_tfidf_svc_c2": {
+      "complexity_rank": 5,
+      "name": "word_char_tfidf_svc_c2",
+      "parameters": {
+        "C": 2,
+        "char_analyzer": "char_wb",
+        "char_ngram_range": [
+          3,
+          5
+        ],
+        "estimator": "LinearSVC",
+        "features": "word_plus_char_wb_tfidf",
+        "max_iter": 5000,
+        "random_state": 42,
+        "sublinear_tf": true,
+        "word_ngram_range": [
+          1,
+          2
+        ]
+      }
+    },
+    "word_tfidf_logreg_c1": {
+      "complexity_rank": 1,
+      "name": "word_tfidf_logreg_c1",
+      "parameters": {
+        "C": 1,
+        "estimator": "LogisticRegression",
+        "features": "word_tfidf",
+        "max_iter": 2000,
+        "ngram_range": [
+          1,
+          2
+        ],
+        "random_state": 42,
+        "sublinear_tf": true
+      }
+    },
+    "word_tfidf_logreg_c4": {
+      "complexity_rank": 2,
+      "name": "word_tfidf_logreg_c4",
+      "parameters": {
+        "C": 4,
+        "estimator": "LogisticRegression",
+        "features": "word_tfidf",
+        "max_iter": 2000,
+        "ngram_range": [
+          1,
+          2
+        ],
+        "random_state": 42,
+        "sublinear_tf": true
+      }
+    }
+  },
+  "fold_count": 5,
+  "fold_scores": [
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 1,
+      "macro_f1": 0.16666666666666666,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 2,
+      "macro_f1": 0.16666666666666666,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 3,
+      "macro_f1": 0.16666666666666666,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 4,
+      "macro_f1": 0.16666666666666666,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 5,
+      "macro_f1": 0.16666666666666666,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 1,
+      "macro_f1": 0.7097096140574402,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 2,
+      "macro_f1": 0.6377541757443718,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 3,
+      "macro_f1": 0.6902813299232736,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 4,
+      "macro_f1": 0.6714054480011927,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 5,
+      "macro_f1": 0.5745830396993188,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 1,
+      "macro_f1": 0.7097096140574402,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 2,
+      "macro_f1": 0.6551337551337552,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 3,
+      "macro_f1": 0.673567977915804,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 4,
+      "macro_f1": 0.670710182600045,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 5,
+      "macro_f1": 0.5745830396993188,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 1,
+      "macro_f1": 0.7113200156678418,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 2,
+      "macro_f1": 0.692623716153128,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 3,
+      "macro_f1": 0.7119607529461952,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 4,
+      "macro_f1": 0.6716108966108966,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 5,
+      "macro_f1": 0.5781015732235244,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 1,
+      "macro_f1": 0.7113200156678418,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 2,
+      "macro_f1": 0.6715697515697516,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 3,
+      "macro_f1": 0.7119607529461952,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 4,
+      "macro_f1": 0.6898148148148149,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 5,
+      "macro_f1": 0.6162266918080871,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 1,
+      "macro_f1": 0.7113200156678418,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 2,
+      "macro_f1": 0.6715697515697516,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 3,
+      "macro_f1": 0.6932276456681964,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 4,
+      "macro_f1": 0.6898148148148149,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 5,
+      "macro_f1": 0.6162266918080871,
+      "repository": "bitcoin/bitcoin",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 1,
+      "macro_f1": 0.16666666666666666,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 2,
+      "macro_f1": 0.16666666666666666,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 3,
+      "macro_f1": 0.16666666666666666,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 4,
+      "macro_f1": 0.16666666666666666,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 5,
+      "macro_f1": 0.16666666666666666,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 1,
+      "macro_f1": 0.8216524216524217,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 2,
+      "macro_f1": 0.7567368032484311,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 3,
+      "macro_f1": 0.8814814814814816,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 4,
+      "macro_f1": 0.7331632331632333,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 5,
+      "macro_f1": 0.7542328042328043,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 1,
+      "macro_f1": 0.8536747273589379,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 2,
+      "macro_f1": 0.7731496146130291,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 3,
+      "macro_f1": 0.8814814814814816,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 4,
+      "macro_f1": 0.7433862433862434,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 5,
+      "macro_f1": 0.7709323197128075,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 1,
+      "macro_f1": 0.8692185007974481,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 2,
+      "macro_f1": 0.757252998886578,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 3,
+      "macro_f1": 0.8294970161977835,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 4,
+      "macro_f1": 0.6858500976148035,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 5,
+      "macro_f1": 0.7877016551435156,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 1,
+      "macro_f1": 0.8692185007974481,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 2,
+      "macro_f1": 0.757252998886578,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 3,
+      "macro_f1": 0.8137566137566138,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 4,
+      "macro_f1": 0.6858500976148035,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 5,
+      "macro_f1": 0.7877016551435156,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 1,
+      "macro_f1": 0.8672096908939014,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 2,
+      "macro_f1": 0.7724309675529187,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 3,
+      "macro_f1": 0.8137566137566138,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 4,
+      "macro_f1": 0.6858500976148035,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 5,
+      "macro_f1": 0.7877016551435156,
+      "repository": "facebook/react",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 1,
+      "macro_f1": 0.16666666666666666,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 2,
+      "macro_f1": 0.16666666666666666,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 3,
+      "macro_f1": 0.16666666666666666,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 4,
+      "macro_f1": 0.16666666666666666,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 5,
+      "macro_f1": 0.16666666666666666,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 1,
+      "macro_f1": 0.6957671957671957,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 2,
+      "macro_f1": 0.7495822890559732,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 3,
+      "macro_f1": 0.7838827838827839,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 4,
+      "macro_f1": 0.648062015503876,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 5,
+      "macro_f1": 0.7155067155067155,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 1,
+      "macro_f1": 0.711923218899963,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 2,
+      "macro_f1": 0.7503142677561282,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 3,
+      "macro_f1": 0.7838827838827839,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 4,
+      "macro_f1": 0.6650424510889626,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 5,
+      "macro_f1": 0.7153717627401838,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 1,
+      "macro_f1": 0.6964193429309709,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 2,
+      "macro_f1": 0.7332186783406295,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 3,
+      "macro_f1": 0.799778217158878,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 4,
+      "macro_f1": 0.6472884033859644,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 5,
+      "macro_f1": 0.7659959611179122,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 1,
+      "macro_f1": 0.712800271623801,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 2,
+      "macro_f1": 0.7332186783406295,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 3,
+      "macro_f1": 0.8165869218500797,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 4,
+      "macro_f1": 0.7015530539920783,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 5,
+      "macro_f1": 0.7659959611179122,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 1,
+      "macro_f1": 0.712800271623801,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 2,
+      "macro_f1": 0.7161654135338346,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 3,
+      "macro_f1": 0.8165869218500797,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 4,
+      "macro_f1": 0.7015530539920783,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 5,
+      "macro_f1": 0.7486772486772487,
+      "repository": "microsoft/vscode",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 1,
+      "macro_f1": 0.16666666666666666,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 2,
+      "macro_f1": 0.16666666666666666,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 3,
+      "macro_f1": 0.16666666666666666,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 4,
+      "macro_f1": 0.16666666666666666,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 5,
+      "macro_f1": 0.16666666666666666,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 1,
+      "macro_f1": 0.7620931035565182,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 2,
+      "macro_f1": 0.6770179074339763,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 3,
+      "macro_f1": 0.6291254385412072,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 4,
+      "macro_f1": 0.7657441476030501,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 5,
+      "macro_f1": 0.6198172198172198,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 1,
+      "macro_f1": 0.7840525328330207,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 2,
+      "macro_f1": 0.6966124018755598,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 3,
+      "macro_f1": 0.6978267466072344,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 4,
+      "macro_f1": 0.8315083609201256,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 5,
+      "macro_f1": 0.7093231971280751,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 1,
+      "macro_f1": 0.8217351890364207,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 2,
+      "macro_f1": 0.7658181437251205,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 3,
+      "macro_f1": 0.696014196014196,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 4,
+      "macro_f1": 0.7935165609584214,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 5,
+      "macro_f1": 0.7110020061239574,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 1,
+      "macro_f1": 0.8059845559845561,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 2,
+      "macro_f1": 0.7658181437251205,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 3,
+      "macro_f1": 0.6964646464646465,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 4,
+      "macro_f1": 0.7935165609584214,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 5,
+      "macro_f1": 0.7478001257071024,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 1,
+      "macro_f1": 0.8218857155027367,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 2,
+      "macro_f1": 0.7491442491442492,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 3,
+      "macro_f1": 0.6964646464646465,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 4,
+      "macro_f1": 0.7935165609584214,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 5,
+      "macro_f1": 0.7478001257071024,
+      "repository": "opencv/opencv",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 1,
+      "macro_f1": 0.16666666666666666,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 2,
+      "macro_f1": 0.16666666666666666,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 3,
+      "macro_f1": 0.16666666666666666,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 4,
+      "macro_f1": 0.16666666666666666,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "dummy_most_frequent",
+      "fold": 5,
+      "macro_f1": 0.16666666666666666,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 1,
+      "macro_f1": 0.7434343434343434,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 2,
+      "macro_f1": 0.8002741417375564,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 3,
+      "macro_f1": 0.8152820931278705,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 4,
+      "macro_f1": 0.8169214510677926,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "fold": 5,
+      "macro_f1": 0.7875130944898387,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 1,
+      "macro_f1": 0.7765807765807766,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 2,
+      "macro_f1": 0.8508196549812217,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 3,
+      "macro_f1": 0.8146616541353383,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 4,
+      "macro_f1": 0.7997432605905006,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "fold": 5,
+      "macro_f1": 0.7875130944898387,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 1,
+      "macro_f1": 0.7405826879511089,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 2,
+      "macro_f1": 0.833943833943834,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 3,
+      "macro_f1": 0.7804511278195488,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 4,
+      "macro_f1": 0.7505115089514067,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "fold": 5,
+      "macro_f1": 0.769670150331105,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 1,
+      "macro_f1": 0.7405826879511089,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 2,
+      "macro_f1": 0.8163324979114454,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 3,
+      "macro_f1": 0.7804511278195488,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 4,
+      "macro_f1": 0.7507310646228992,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "fold": 5,
+      "macro_f1": 0.769670150331105,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 1,
+      "macro_f1": 0.7405826879511089,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 2,
+      "macro_f1": 0.8163324979114454,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 3,
+      "macro_f1": 0.7619526503247434,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 4,
+      "macro_f1": 0.7507310646228992,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "fold": 5,
+      "macro_f1": 0.769670150331105,
+      "repository": "tensorflow/tensorflow",
+      "train_rows": 240,
+      "validation_rows": 60
+    }
+  ],
+  "labels": [
+    "bug",
+    "feature",
+    "question"
+  ],
+  "protocol": "chosen_model_selection_train_only",
+  "repositories": [
+    "bitcoin/bitcoin",
+    "facebook/react",
+    "microsoft/vscode",
+    "opencv/opencv",
+    "tensorflow/tensorflow"
+  ],
+  "seed": 42,
+  "selected_candidate": "word_char_tfidf_svc_c1",
+  "summaries": [
+    {
+      "candidate": "dummy_most_frequent",
+      "complexity_rank": 0,
+      "fold_count": 25,
+      "global_mean": 0.16666666666666666,
+      "global_std": 2.7755575615628914e-17,
+      "parameters": {
+        "estimator": "DummyClassifier",
+        "strategy": "most_frequent"
+      },
+      "per_repository": {
+        "bitcoin/bitcoin": {
+          "fold_scores": [
+            0.16666666666666666,
+            0.16666666666666666,
+            0.16666666666666666,
+            0.16666666666666666,
+            0.16666666666666666
+          ],
+          "mean": 0.16666666666666666,
+          "std": 0.0
+        },
+        "facebook/react": {
+          "fold_scores": [
+            0.16666666666666666,
+            0.16666666666666666,
+            0.16666666666666666,
+            0.16666666666666666,
+            0.16666666666666666
+          ],
+          "mean": 0.16666666666666666,
+          "std": 0.0
+        },
+        "microsoft/vscode": {
+          "fold_scores": [
+            0.16666666666666666,
+            0.16666666666666666,
+            0.16666666666666666,
+            0.16666666666666666,
+            0.16666666666666666
+          ],
+          "mean": 0.16666666666666666,
+          "std": 0.0
+        },
+        "opencv/opencv": {
+          "fold_scores": [
+            0.16666666666666666,
+            0.16666666666666666,
+            0.16666666666666666,
+            0.16666666666666666,
+            0.16666666666666666
+          ],
+          "mean": 0.16666666666666666,
+          "std": 0.0
+        },
+        "tensorflow/tensorflow": {
+          "fold_scores": [
+            0.16666666666666666,
+            0.16666666666666666,
+            0.16666666666666666,
+            0.16666666666666666,
+            0.16666666666666666
+          ],
+          "mean": 0.16666666666666666,
+          "std": 0.0
+        }
+      }
+    },
+    {
+      "candidate": "word_tfidf_logreg_c1",
+      "complexity_rank": 1,
+      "fold_count": 25,
+      "global_mean": 0.7296409716691954,
+      "global_std": 0.07288629187740815,
+      "parameters": {
+        "C": 1,
+        "estimator": "LogisticRegression",
+        "features": "word_tfidf",
+        "max_iter": 2000,
+        "ngram_range": [
+          1,
+          2
+        ],
+        "random_state": 42,
+        "sublinear_tf": true
+      },
+      "per_repository": {
+        "bitcoin/bitcoin": {
+          "fold_scores": [
+            0.7097096140574402,
+            0.6377541757443718,
+            0.6902813299232736,
+            0.6714054480011927,
+            0.5745830396993188
+          ],
+          "mean": 0.6567467214851194,
+          "std": 0.047447030706068934
+        },
+        "facebook/react": {
+          "fold_scores": [
+            0.8216524216524217,
+            0.7567368032484311,
+            0.8814814814814816,
+            0.7331632331632333,
+            0.7542328042328043
+          ],
+          "mean": 0.7894533487556744,
+          "std": 0.054745581973770684
+        },
+        "microsoft/vscode": {
+          "fold_scores": [
+            0.6957671957671957,
+            0.7495822890559732,
+            0.7838827838827839,
+            0.648062015503876,
+            0.7155067155067155
+          ],
+          "mean": 0.7185601999433089,
+          "std": 0.04632115888290571
+        },
+        "opencv/opencv": {
+          "fold_scores": [
+            0.7620931035565182,
+            0.6770179074339763,
+            0.6291254385412072,
+            0.7657441476030501,
+            0.6198172198172198
+          ],
+          "mean": 0.6907595633903942,
+          "std": 0.06281970453318123
+        },
+        "tensorflow/tensorflow": {
+          "fold_scores": [
+            0.7434343434343434,
+            0.8002741417375564,
+            0.8152820931278705,
+            0.8169214510677926,
+            0.7875130944898387
+          ],
+          "mean": 0.7926850247714803,
+          "std": 0.026862632146739056
+        }
+      }
+    },
+    {
+      "candidate": "word_tfidf_logreg_c4",
+      "complexity_rank": 2,
+      "fold_count": 25,
+      "global_mean": 0.7472602048187431,
+      "global_std": 0.07137719124033524,
+      "parameters": {
+        "C": 4,
+        "estimator": "LogisticRegression",
+        "features": "word_tfidf",
+        "max_iter": 2000,
+        "ngram_range": [
+          1,
+          2
+        ],
+        "random_state": 42,
+        "sublinear_tf": true
+      },
+      "per_repository": {
+        "bitcoin/bitcoin": {
+          "fold_scores": [
+            0.7097096140574402,
+            0.6551337551337552,
+            0.673567977915804,
+            0.670710182600045,
+            0.5745830396993188
+          ],
+          "mean": 0.6567409138812726,
+          "std": 0.04480284142830609
+        },
+        "facebook/react": {
+          "fold_scores": [
+            0.8536747273589379,
+            0.7731496146130291,
+            0.8814814814814816,
+            0.7433862433862434,
+            0.7709323197128075
+          ],
+          "mean": 0.8045248773104998,
+          "std": 0.0532706791372645
+        },
+        "microsoft/vscode": {
+          "fold_scores": [
+            0.711923218899963,
+            0.7503142677561282,
+            0.7838827838827839,
+            0.6650424510889626,
+            0.7153717627401838
+          ],
+          "mean": 0.7253068968736043,
+          "std": 0.03991525094359167
+        },
+        "opencv/opencv": {
+          "fold_scores": [
+            0.7840525328330207,
+            0.6966124018755598,
+            0.6978267466072344,
+            0.8315083609201256,
+            0.7093231971280751
+          ],
+          "mean": 0.7438646478728032,
+          "std": 0.05448277059506023
+        },
+        "tensorflow/tensorflow": {
+          "fold_scores": [
+            0.7765807765807766,
+            0.8508196549812217,
+            0.8146616541353383,
+            0.7997432605905006,
+            0.7875130944898387
+          ],
+          "mean": 0.8058636881555351,
+          "std": 0.025807502747733888
+        }
+      }
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c0_5",
+      "complexity_rank": 3,
+      "fold_count": 25,
+      "global_mean": 0.7440433292412475,
+      "global_std": 0.06442821117315833,
+      "parameters": {
+        "C": 0.5,
+        "char_analyzer": "char_wb",
+        "char_ngram_range": [
+          3,
+          5
+        ],
+        "estimator": "LinearSVC",
+        "features": "word_plus_char_wb_tfidf",
+        "max_iter": 5000,
+        "random_state": 42,
+        "sublinear_tf": true,
+        "word_ngram_range": [
+          1,
+          2
+        ]
+      },
+      "per_repository": {
+        "bitcoin/bitcoin": {
+          "fold_scores": [
+            0.7113200156678418,
+            0.692623716153128,
+            0.7119607529461952,
+            0.6716108966108966,
+            0.5781015732235244
+          ],
+          "mean": 0.6731233909203171,
+          "std": 0.049757449679131004
+        },
+        "facebook/react": {
+          "fold_scores": [
+            0.8692185007974481,
+            0.757252998886578,
+            0.8294970161977835,
+            0.6858500976148035,
+            0.7877016551435156
+          ],
+          "mean": 0.7859040537280257,
+          "std": 0.062732052278969
+        },
+        "microsoft/vscode": {
+          "fold_scores": [
+            0.6964193429309709,
+            0.7332186783406295,
+            0.799778217158878,
+            0.6472884033859644,
+            0.7659959611179122
+          ],
+          "mean": 0.7285401205868709,
+          "std": 0.05316630737800118
+        },
+        "opencv/opencv": {
+          "fold_scores": [
+            0.8217351890364207,
+            0.7658181437251205,
+            0.696014196014196,
+            0.7935165609584214,
+            0.7110020061239574
+          ],
+          "mean": 0.7576172191716232,
+          "std": 0.0478226777030613
+        },
+        "tensorflow/tensorflow": {
+          "fold_scores": [
+            0.7405826879511089,
+            0.833943833943834,
+            0.7804511278195488,
+            0.7505115089514067,
+            0.769670150331105
+          ],
+          "mean": 0.7750318617994008,
+          "std": 0.03260898691659348
+        }
+      }
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c1",
+      "complexity_rank": 4,
+      "fold_count": 25,
+      "global_mean": 0.7484871336562441,
+      "global_std": 0.05552535838714507,
+      "parameters": {
+        "C": 1,
+        "char_analyzer": "char_wb",
+        "char_ngram_range": [
+          3,
+          5
+        ],
+        "estimator": "LinearSVC",
+        "features": "word_plus_char_wb_tfidf",
+        "max_iter": 5000,
+        "random_state": 42,
+        "sublinear_tf": true,
+        "word_ngram_range": [
+          1,
+          2
+        ]
+      },
+      "per_repository": {
+        "bitcoin/bitcoin": {
+          "fold_scores": [
+            0.7113200156678418,
+            0.6715697515697516,
+            0.7119607529461952,
+            0.6898148148148149,
+            0.6162266918080871
+          ],
+          "mean": 0.6801784053613381,
+          "std": 0.035317724966770804
+        },
+        "facebook/react": {
+          "fold_scores": [
+            0.8692185007974481,
+            0.757252998886578,
+            0.8137566137566138,
+            0.6858500976148035,
+            0.7877016551435156
+          ],
+          "mean": 0.7827559732397918,
+          "std": 0.06083160130246597
+        },
+        "microsoft/vscode": {
+          "fold_scores": [
+            0.712800271623801,
+            0.7332186783406295,
+            0.8165869218500797,
+            0.7015530539920783,
+            0.7659959611179122
+          ],
+          "mean": 0.7460309773849001,
+          "std": 0.04152941693872246
+        },
+        "opencv/opencv": {
+          "fold_scores": [
+            0.8059845559845561,
+            0.7658181437251205,
+            0.6964646464646465,
+            0.7935165609584214,
+            0.7478001257071024
+          ],
+          "mean": 0.7619168065679693,
+          "std": 0.03857200380719757
+        },
+        "tensorflow/tensorflow": {
+          "fold_scores": [
+            0.7405826879511089,
+            0.8163324979114454,
+            0.7804511278195488,
+            0.7507310646228992,
+            0.769670150331105
+          ],
+          "mean": 0.7715535057272215,
+          "std": 0.026384231862022725
+        }
+      }
+    },
+    {
+      "candidate": "word_char_tfidf_svc_c2",
+      "complexity_rank": 5,
+      "fold_count": 25,
+      "global_mean": 0.7461188481234379,
+      "global_std": 0.05661004660246155,
+      "parameters": {
+        "C": 2,
+        "char_analyzer": "char_wb",
+        "char_ngram_range": [
+          3,
+          5
+        ],
+        "estimator": "LinearSVC",
+        "features": "word_plus_char_wb_tfidf",
+        "max_iter": 5000,
+        "random_state": 42,
+        "sublinear_tf": true,
+        "word_ngram_range": [
+          1,
+          2
+        ]
+      },
+      "per_repository": {
+        "bitcoin/bitcoin": {
+          "fold_scores": [
+            0.7113200156678418,
+            0.6715697515697516,
+            0.6932276456681964,
+            0.6898148148148149,
+            0.6162266918080871
+          ],
+          "mean": 0.6764317839057383,
+          "std": 0.032639508810844535
+        },
+        "facebook/react": {
+          "fold_scores": [
+            0.8672096908939014,
+            0.7724309675529187,
+            0.8137566137566138,
+            0.6858500976148035,
+            0.7877016551435156
+          ],
+          "mean": 0.7853898049923507,
+          "std": 0.05929687855548863
+        },
+        "microsoft/vscode": {
+          "fold_scores": [
+            0.712800271623801,
+            0.7161654135338346,
+            0.8165869218500797,
+            0.7015530539920783,
+            0.7486772486772487
+          ],
+          "mean": 0.7391565819354085,
+          "std": 0.04176930659229767
+        },
+        "opencv/opencv": {
+          "fold_scores": [
+            0.8218857155027367,
+            0.7491442491442492,
+            0.6964646464646465,
+            0.7935165609584214,
+            0.7478001257071024
+          ],
+          "mean": 0.7617622595554312,
+          "std": 0.0429909275460037
+        },
+        "tensorflow/tensorflow": {
+          "fold_scores": [
+            0.7405826879511089,
+            0.8163324979114454,
+            0.7619526503247434,
+            0.7507310646228992,
+            0.769670150331105
+          ],
+          "mean": 0.7678538102282604,
+          "std": 0.026173301153584475
+        }
+      }
+    }
+  ]
+}
